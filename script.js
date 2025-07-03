@@ -2128,22 +2128,17 @@ const dragons = [
   "1000 - Nature Dragon"
 ];
 
-const container = document.getElementById("dragonContainer");
-
-function displayDragons(list) {
-  container.innerHTML = "";
-  list.forEach(name => {
-    const div = document.createElement("div");
-    div.className = "dragon-item";
-    div.textContent = name;
-    container.appendChild(div);
-  });
-}
-
 function filterDragons() {
-  const filter = document.getElementById("search").value.toLowerCase();
-  const filtered = dragons.filter(d => d.toLowerCase().includes(filter));
-  displayDragons(filtered);
-}
+    let input = document.getElementById("search").value.toLowerCase();
+    let items = document.querySelectorAll(".dragon-item");
 
-displayDragons(dragons);
+    items.forEach(item => {
+        let text = item.textContent.toLowerCase();
+        if (text.includes(input)) {
+            item.style.display = "block";
+        } else {
+            item.style.display = "none";
+        }
+    });
+}
+    
